@@ -1,0 +1,13 @@
+[Unit]
+Description=Join Kubernetes
+After=network-online.target
+Wants=network-online.target
+Wants=crio.service
+After=crio.service
+[Service]
+Type=oneshot
+Environment=HOME=/root
+EnvironmentFile=/etc/ltsp/kubeadm-join.conf
+ExecStart=/bin/sh -c "exec kubeadm join $HOST:$PORT --token $TOKEN --discovery-token-ca-cert-hash sha256:$SHA256"
+[Install]
+WantedBy=multi-user.target
