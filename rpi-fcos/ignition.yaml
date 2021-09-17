@@ -1,0 +1,26 @@
+---
+variant: fcos
+version: 1.2.0
+passwd:
+  users:
+    - name: core
+      groups:
+        - wheel
+      ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8+LqzvVcJShK7W+sZgCQ7kBiUGbZBIXkhpsaFTqICUSRNZ5W8RpK7YHxnHlyN1GgOUzFa1kGpq6/ZX5hPN8QivHV338EzJ5zd7uYTwu1mtxJtKVmj6Ru9Sz/B/IBqqcttQnaMdIDkyFzV5L8M+eVSA0Pxlvr1pftRcRJwpL/ie6jbRgkpD0LpDaskbcbJbQUn8DSesb43XgoG/maUQuCZU94FjQfVhNJe8NoV1BM2WTaaZKWmeQcKwZdECgYSDzQ3Ed+tfAEmt53ZOxEwXS2QZUTnMt/PvrCxKEC+CHctCifR7Eba3hhTAx/qgvm/5Er8hm2wwtSdMlPoIqOIORHz"
+    - name: pi
+      groups:
+        - wheel
+        - sudo
+      ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8+LqzvVcJShK7W+sZgCQ7kBiUGbZBIXkhpsaFTqICUSRNZ5W8RpK7YHxnHlyN1GgOUzFa1kGpq6/ZX5hPN8QivHV338EzJ5zd7uYTwu1mtxJtKVmj6Ru9Sz/B/IBqqcttQnaMdIDkyFzV5L8M+eVSA0Pxlvr1pftRcRJwpL/ie6jbRgkpD0LpDaskbcbJbQUn8DSesb43XgoG/maUQuCZU94FjQfVhNJe8NoV1BM2WTaaZKWmeQcKwZdECgYSDzQ3Ed+tfAEmt53ZOxEwXS2QZUTnMt/PvrCxKEC+CHctCifR7Eba3hhTAx/qgvm/5Er8hm2wwtSdMlPoIqOIORHz"
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: tkpi01.lan
+systemd:
+  units:
+    - name: docker.service
+      mask: true
